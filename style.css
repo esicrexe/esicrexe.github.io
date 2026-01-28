@@ -16,11 +16,15 @@
 body {
     background-color: var(--bg-color);
     font-family: 'Poppins', sans-serif;
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    /* For mobile browsers */
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow-y: auto;
+    /* Allow scrolling if content is tall */
+    overflow-x: hidden;
     position: relative;
     padding: 1rem;
     /* Prevent edge touching on mobile */
@@ -79,7 +83,8 @@ body {
     transform: rotate(-2deg);
     margin: 20px 0;
     transition: transform 0.3s ease;
-    width: 80%;
+    width: 90%;
+    /* Wider on mobile by default */
     max-width: 300px;
     border: 5px solid #141313;
 }
@@ -220,9 +225,13 @@ body {
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
     .title {
         font-size: 2rem;
+    }
+
+    .caption {
+        font-size: 1.2rem;
     }
 
     .question {
@@ -232,5 +241,13 @@ body {
     .btn {
         padding: 10px 20px;
         font-size: 1rem;
+        width: 100%;
+        /* Full width buttons on very small screens */
+        max-width: 200px;
+    }
+
+    .polaroid {
+        width: 95%;
+        /* Use almost full width on small phones */
     }
 }
