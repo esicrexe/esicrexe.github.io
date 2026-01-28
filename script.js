@@ -17,15 +17,15 @@ const jsConfetti = window.confetti;
 // REPLACE THESE URLS AND TEXTS WITH YOUR OWN!
 const memories = [
     {
-        img: "img/us1.jpeg",
+        img: "us1.jpeg",
         text: "Ever since we met... 💕"
     },
     {
-        img: "img/us2.jpeg",
+        img: "us2.jpeg",
         text: "... you have always shown me the beauty of love 💖🌸."
     },
     {
-        video: "img/us.mp4",
+        video: "us.mp4",
         text: "✨✨✨"
     }
 ];

@@ -93,7 +93,7 @@ body {
     height: auto;
     aspect-ratio: 1/1;
     object-fit: cover;
-    border: 1px solid #eee;
+    border: 1px solid #000000;
 }
 
 .memory-img,
@@ -102,7 +102,7 @@ body {
     height: auto;
     aspect-ratio: 10/18;
     object-fit: cover;
-    border: 1px solid #eee;
+    border: 1px solid #000000;
 }
 
 /* Images */
