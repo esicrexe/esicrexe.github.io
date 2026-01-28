@@ -3,6 +3,7 @@ const gallerySection = document.getElementById('gallery-section');
 const proposalSection = document.getElementById('proposal-section');
 const nextBtn = document.getElementById('nextBtn');
 const memoryImg = document.getElementById('memory-img');
+const memoryVideo = document.getElementById('memory-video');
 const memoryText = document.getElementById('memory-text');
 
 const yesBtn = document.getElementById('yesBtn');
@@ -16,15 +17,15 @@ const jsConfetti = window.confetti;
 // REPLACE THESE URLS AND TEXTS WITH YOUR OWN!
 const memories = [
     {
-        img: "https://media.tenor.com/_MvX3qYk1lUAAAAC/peach-goma-peach-and-goma.gif",
+        img: "img/us1.jpeg",
         text: "Ever since we met... 💕"
     },
     {
-        img: "https://media.tenor.com/PZQM89d7b4AAAAAi/mochi-cat-peach-goma.gif",
+        img: "img/us2.jpeg",
         text: "... you have always shown me the beauty of love 💖🌸."
     },
     {
-        img: "https://media.tenor.com/2v8yR8_h5sMAAAAi/mochi-peach.gif",
+        video: "img/us.mp4",
         text: "✨✨✨"
     }
 ];
@@ -35,15 +36,33 @@ let currentMemoryIndex = 0;
 function showMemory(index) {
     // Add fade-out effect
     memoryImg.style.opacity = '0';
+    memoryVideo.style.opacity = '0';
     memoryText.style.opacity = '0';
 
     setTimeout(() => {
-        memoryImg.src = memories[index].img;
-        memoryText.textContent = memories[index].text;
+        const memory = memories[index];
+
+        if (memory.video) {
+            memoryImg.style.display = 'none';
+            memoryVideo.style.display = 'block';
+            memoryVideo.src = memory.video;
+            memoryVideo.play().catch(e => console.log("Autoplay prevented:", e));
+        } else {
+            memoryVideo.pause();
+            memoryVideo.style.display = 'none';
+            memoryImg.style.display = 'block';
+            memoryImg.src = memory.img;
+        }
+
+        memoryText.textContent = memory.text;
 
         // Fade in
-        memoryImg.style.opacity = '1';
-        memoryText.style.opacity = '1';
+        // Small delay to allow display change to render before opacity transition
+        requestAnimationFrame(() => {
+            memoryImg.style.opacity = '1';
+            memoryVideo.style.opacity = '1';
+            memoryText.style.opacity = '1';
+        });
     }, 200);
 }
 
